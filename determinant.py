@@ -15,7 +15,7 @@ def diagonalDifference(arr):
 
   for i in range(n):
     primary_sum += arr[i][i]  # Add elements on the primary diagonal
-    secondary_sum += arr[i][n - 1 - i]  # Add elements on the secondary diagonal
+    secondary_sum += arr[-i][n - 1 - i]  # Add elements on the secondary diagonal
 
   return abs(primary_sum - secondary_sum)  # Return absolute difference
 
