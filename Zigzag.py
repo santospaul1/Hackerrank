@@ -1,40 +1,27 @@
 def findZigZagSequence(a, n):
-    """
-    Finds the lexicographically smallest zig zag sequence for a given array.
-
-    Args:
-        a: A list of distinct integers representing the input array.
-        n: The length of the list (number of elements).
-
-    Returns:
-        None (prints the zig zag sequence directly).
-    """
-
-    # Sort the array in ascending order
     a.sort()
+    mid = n // 2
+    a[mid], a[n-1] = a[n-1], a[mid]
 
-    # Swap the middle element with the last element for base case
-    mid = (n + 1) // 2
-    a[mid], a[n - 1] = a[n - 1], a[mid]
-
-    # Create two pointers for zig-zagging
     st = mid + 1
     ed = n - 2
-
-    # Iterate while pointers haven't crossed each other
-    while st <= ed:
-        # Swap elements at st and ed for zig-zag pattern
+    while(st <= ed):
         a[st], a[ed] = a[ed], a[st]
-        st += 1
-        ed -= 1
+        st = st + 1
+        ed = ed - 1
 
-    # Print the zig-zag sequence
-    for num in a:
-        print(num, end=" ")
+    for i in range (n):
+        if i == n-1:
+            print(a[i])
+        else:
+            print(a[i], end = ' ')
+    return
 
-    print()  # Add a newline after each test case
+test_cases = int(input())
+for cs in range (test_cases):
+    n = int(input())
+    a = list(map(int, input().split()))
+    findZigZagSequence(a, n)
 
-# Get the number of test cases
-a = [1, 2, 3, 4, 7, 6, 5]
-n = len(a)
-(findZigZagSequence(a, n))
+
+
