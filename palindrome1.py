@@ -16,23 +16,18 @@ import sys
 #
 
 def palindromeIndex(s):
-    if s == s[::-1]:
-       return -1
+    n = len(s)
+    
+    for i in range(n):
+        if s[i] != s[i-1] and s[i] != s[i-2]:
+            return i
+    return -1
 
   # Find the first mismatching character from left and right ends
-    left, right = 0, len(s) - 1
-    while left < right:
-        if s[left] != s[right]:
-      # Check removing left or right character makes a palindrome
-            if s[left + 1:right + 1] == s[left + 1:right + 1][::-1]:
-                return left
-            else:
-                return right
-            left += 1
-            right -= 1
+    
 
   # No removable character found
-    return -1
+    
 
             
         
@@ -42,7 +37,10 @@ def palindromeIndex(s):
 s = 'aaab'
 t = 'baa'
 u = 'aaa'
+x = 'aaaac'
 print(palindromeIndex(s))  
 print(palindromeIndex(t))   
 print(palindromeIndex(u)) 
+print(palindromeIndex(x)) 
+
     # Write your code here
